@@ -54,6 +54,9 @@ def parse_markdown_cv(md_file):
 
 def parse_config(config_file):
     """Parse the Jekyll _config.yml file for additional information."""
+    if not config_file:
+        return {}
+
     if not os.path.exists(config_file):
         return {}
     
