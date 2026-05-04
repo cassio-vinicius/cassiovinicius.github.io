@@ -94,3 +94,37 @@ Unfortunately, one logistical issue with a template theme like Academic Pages th
 [![GitHub stars](https://img.shields.io/github/stars/academicpages/academicpages.github.io)](https://github.com/academicpages/academicpages.github.io)
 [![GitHub forks](https://img.shields.io/github/forks/academicpages/academicpages.github.io)](https://github.com/academicpages/academicpages.github.io/fork)
 </div>
+
+## Guia rápido da base de código (onboarding)
+
+Este repositório é um site estático em **Jekyll** (tema Academic Pages), organizado por convenções de pastas.
+
+### Estrutura geral
+
+- `_config.yml`: configuração global do site (título, autor, plugins, navegação, tema, URLs).
+- `_pages/`: páginas estáticas principais (About, CV, Talks, Teaching, etc.).
+- `_posts/`: posts de blog com convenção de data no nome do arquivo.
+- `_publications/` e `_talks/`: coleções customizadas para publicações e palestras.
+- `_includes/`: componentes reutilizáveis de layout (head, footer, sidebar, cards de conteúdo).
+- `_layouts/`: layouts base (não editar sem entender impacto global).
+- `_sass/`: estilos SCSS por módulos (layout, tema e vendors).
+- `_data/`: dados estruturados em YAML/JSON (menu, autores, textos de UI, CV em JSON, comentários).
+- `assets/`: JavaScript/CSS/images processados e estáticos.
+- `talkmap*`: scripts/notebooks para gerar visualização geográfica de talks.
+
+### Pontos importantes para quem está chegando
+
+1. **Quase tudo começa no `_config.yml`**: mudanças aqui afetam o site inteiro e exigem reinício do `jekyll serve`.
+2. **Navegação no topo** vem de `_data/navigation.yml`.
+3. **Conteúdo primeiro, layout depois**: para aprender rápido, edite `_pages/`, `_posts/`, `_publications/` antes de mexer em `_includes/` e `_sass/`.
+4. **Coleções têm formato próprio**: publicações e talks usam front matter específico (title, venue, date, permalink, etc.).
+5. **Build JS separado**: `npm run build:js` recompila `assets/js/main.min.js` quando necessário.
+6. **Dependências Ruby + Node**: Jekyll (Ruby gems) e scripts/minificação JS (Node) convivem no mesmo projeto.
+
+### Dicas práticas para aprender mais rápido
+
+- Faça um “tour guiado” nesta ordem: `_config.yml` → `_data/navigation.yml` → `_pages/about.md` → um arquivo de `_posts/`.
+- Suba localmente com `bundle exec jekyll serve -l -H localhost` e valide cada alteração pequena.
+- Compare páginas parecidas (ex.: `talks.html` e `publications.html`) para entender o padrão das coleções.
+- Só depois entre em `_includes/` para entender como os blocos são montados.
+- Se alterar JS em `assets/js`, rode `npm run build:js` antes de commitar.
